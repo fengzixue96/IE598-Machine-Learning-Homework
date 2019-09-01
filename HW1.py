@@ -45,11 +45,11 @@ clf = SGDClassifier()
 clf.fit(X_train, y_train)
 
 print( clf.coef_)
-#[[-28.53692691 15.05517618]
-#[ -8.93789454 -8.13185613]
-#[ 14.02830747 -12.80739966]]
+#[[-26.12535216  13.75936747]
+# [-5.63364911  -9.6847133 ]
+# [7.97836513  -1.78157073]]
 print( clf.intercept_)
-#[-17.62477802 -2.35658325 -9.7570213 ]
+#[-13.57793823  -6.87123713  -3.16628147]
 
 #don't forget to import Numpy as np here
 import numpy as np
@@ -77,28 +77,31 @@ print( clf.predict(scaler.transform([[4.7, 3.1]])) )
 #[0]
 
 print( clf.decision_function(scaler.transform([[4.7, 3.1]])) )
-#[[ 19.73905808 8.13288449 -28.63499119]]
+#[[20.48947644  -0.5938857  -13.36556458]]
 
 from sklearn import metrics
 y_train_pred = clf.predict(X_train)
 print( metrics.accuracy_score(y_train, y_train_pred) )
-#0.821428571429
+#0.8214285714285714
 
 y_pred = clf.predict(X_test)
 print( metrics.accuracy_score(y_test, y_pred) )
-#0.684210526316
+#0.6842105263157895
 
 print( metrics.classification_report(y_test, y_pred, target_names=iris.target_names) )
-#precision recall f1-score support
-#setosa 1.00 1.00 1.00 8
-#versicolor 0.43 0.27 0.33 11
-#virginica 0.65 0.79 0.71 19
-#avg / total 0.66 0.68 0.66 38
+#           precision  recall   f1-score    support
+#setosa       1.00      1.00      1.00         8
+#versicolor   0.40      0.18      0.25        11
+#virginica    0.64      0.84      0.73        19
+
+#accuracy                         0.68        38
+#macro avg    0.68      0.67      0.66        38
+#weighted avg 0.65      0.68      0.65        38
 
 print( metrics.confusion_matrix(y_test, y_pred) )
 #[[ 8 0 0]
-#[ 0 3 8]
-#[ 0 4 15]]
+#[ 0 2 9]
+#[ 0 3 16]]
 
 print("My name is Shixue Feng")
 print("My NetID is: shixuef2")
